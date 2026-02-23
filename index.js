@@ -1,16 +1,17 @@
-const app = require("./app");
-const port = 3000;
-const connectDB = require("./config/db");
+import app from "./app.js";
+import connectDB from "./config/db.js";
 
-// Conectamos a la Base de Datos al iniciar la app
-connectDB();
+const port = process.env.PORT || 3000;
 
 async function startServer() {
-  await connectDB(); // conectas Mongo primero
+  await connectDB();
 
   app.listen(port, () => {
     console.log(`Servidor en http://localhost:${port}`);
   });
 }
 
-startServer();
+startServer().catch((error) => {
+  console.error("No se pudo iniciar el servidor:", error.message);
+  process.exit(1);
+});

@@ -1,6 +1,7 @@
-const express = require("express");
+import express from "express";
+import { ProductController } from "../controllers/index.js";
+
 const router = express.Router();
-const ProductController = require("../controllers/ProductController");
 
 router.get("/", ProductController.list);
 router.get("/:id", ProductController.get);
@@ -8,4 +9,4 @@ router.post("/", ProductController.create);
 router.put("/:id", ProductController.update);
 router.delete("/:id", ProductController.destroy);
 
-module.exports = router;
+export default router;

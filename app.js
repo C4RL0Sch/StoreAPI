@@ -1,11 +1,9 @@
-require("dotenv").config(); // Carga las variables del archivo .env
-const express = require("express");
-const app = express();
+import express from "express";
+import userRoutes from "./routes/userRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
+import saleRoutes from "./routes/saleRoutes.js";
 
-// Importar rutas
-const userRoutes = require("./routes/userRoutes");
-const productRoutes = require("./routes/productRoutes");
-const saleRoutes = require("./routes/saleRoutes");
+const app = express();
 
 app.get("/", (req, res) => {
   res.status(200).send("Servidor funcionando 🚀");
@@ -13,12 +11,11 @@ app.get("/", (req, res) => {
 
 app.use(express.json());
 
-// Usar rutas
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/sales", saleRoutes);
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).json({
     error: "Not Found",
     message: `No existe ningún endpoint para ${req.method} ${req.originalUrl}`,
@@ -31,4 +28,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-module.exports = app;
+export default app;
