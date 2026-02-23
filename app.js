@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
   res.status(200).send("Servidor funcionando 🚀");
 });
 
-app.use(express.json());
+app.use(json());
 
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
