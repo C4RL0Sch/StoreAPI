@@ -1,16 +1,16 @@
-const express = require("express");
+import express, { json } from "express";
 const app = express();
 
 // Importar rutas
-const userRoutes = require("./routes/userRoutes");
-const productRoutes = require("./routes/productRoutes");
-const saleRoutes = require("./routes/saleRoutes");
+import userRoutes from "./routes/userRoutes";
+import productRoutes from "./routes/productRoutes";
+import saleRoutes from "./routes/saleRoutes";
 
 app.get("/", (req, res) => {
   res.status(200).send("Servidor funcionando 🚀");
 });
 
-app.use(express.json());
+app.use(json());
 
 // Usar rutas
 app.use("/users", userRoutes);
@@ -30,4 +30,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-module.exports = app;
+export default app;
