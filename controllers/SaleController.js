@@ -1,4 +1,4 @@
-const SaleService = require("../services/SaleService");
+import SaleService from "../services/SaleService.js";
 
 const SaleController = {
   list: async (req, res) => {
@@ -28,4 +28,4 @@ const SaleController = {
   },
 };
 
-module.exports = SaleController;
+export default SaleController;

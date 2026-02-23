@@ -1,5 +1,5 @@
-import { listen } from "./app";
-import connectDB from "./config/db";
+import app from "./app.js";
+import connectDB from "./config/db.js";
 
 const port = process.env.PORT || 3000;
 
@@ -11,4 +11,7 @@ async function startServer() {
   });
 }
 
-startServer();
+startServer().catch((error) => {
+  console.error("No se pudo iniciar el servidor:", error.message);
+  process.exit(1);
+});

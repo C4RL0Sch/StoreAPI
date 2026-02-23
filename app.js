@@ -1,10 +1,9 @@
-import express, { json } from "express";
-const app = express();
+import express from "express";
+import userRoutes from "./routes/userRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
+import saleRoutes from "./routes/saleRoutes.js";
 
-// Importar rutas
-import userRoutes from "./routes/userRoutes";
-import productRoutes from "./routes/productRoutes";
-import saleRoutes from "./routes/saleRoutes";
+const app = express();
 
 app.get("/", (req, res) => {
   res.status(200).send("Servidor funcionando 🚀");
@@ -12,7 +11,6 @@ app.get("/", (req, res) => {
 
 app.use(json());
 
-// Usar rutas
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/sales", saleRoutes);

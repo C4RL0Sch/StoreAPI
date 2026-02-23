@@ -1,27 +1,25 @@
-const User = require("../models/User");
+import User from "../models/User.js";
 
-// REPOSITORIO DE USUARIO
-// Encargado exclusivamente del acceso a datos para Usuarios
 class UserRepository {
-    async findAll() {
-        return await User.find();
-    }
+  async findAll() {
+    return User.find();
+  }
 
-    async findById(id) {
-        return await User.findById(id);
-    }
+  async findById(id) {
+    return User.findById(id);
+  }
 
-    async create(userData) {
-        return await User.create(userData);
-    }
+  async create(userData) {
+    return User.create(userData);
+  }
 
-    async update(id, userData) {
-        return await User.findByIdAndUpdate(id, userData, { new: true });
-    }
+  async update(id, userData) {
+    return User.findByIdAndUpdate(id, userData, { new: true });
+  }
 
-    async delete(id) {
-        return await User.findByIdAndDelete(id);
-    }
+  async delete(id) {
+    return User.findByIdAndDelete(id);
+  }
 }
 
-module.exports = new UserRepository();
+export default new UserRepository();
